@@ -1,5 +1,9 @@
 # Embedded Controller for MSI laptops
 
+> **This is a fork of [BeardOverflow/msi-ec](https://github.com/BeardOverflow/msi-ec).**
+> It exists to add support for the **MSI Creator 16 AI Studio A1VHG** (EC firmware `15F3EMS3.105`), which the upstream does not yet recognize — so the driver silently loads with no attributes exposed on that machine.
+> Pull requests against upstream are still welcome; this fork is kept in sync with `main` for easy rebasing.
+
 ## Disclaimer
 
 This driver might not work on other laptops produced by MSI. Use it at your own risk, we are not responsible for any damage suffered.
@@ -13,9 +17,15 @@ You might want to use a graphical interface instead of executing commands to use
 
 ## Supported devices
 
-Before installation, check if your device is supported in [this list](https://github.com/BeardOverflow/msi-ec/discussions/277).
+Before installation, check if your device is supported in [this list](https://github.com/damien1141/msi-ec/discussions/277).
 
 Can't find your device in the list? Check the contribution guides and open a new issue.
+
+### Added in this fork
+
+| Device | EC firmware | Notes |
+|--------|-------------|-------|
+| MSI Creator 16 AI Studio A1VHG | `15F3EMS3.105` | Single-color keyboard backlight (controlled at EC `0xd3`), speaker/mic mute LEDs, webcam slider. Mute LED hardware is dead on this unit, so `platform::mute` is not registered — `platform::micmute` still works. |
 
 ## Contribute
 Eager to support the project? Your help is always welcome to keep the project alive and going!
@@ -67,7 +77,7 @@ In general, AI bug reports are discouraged unless it is to help with formulating
    - For Ubuntu: `sudo apt install build-essential linux-headers-generic`
    - For Fedora: `sudo dnf install kernel-devel`
    - For Arch:   `sudo pacman -S --needed base-devel linux-headers`
-2. Clone this repository and cd to it: `git clone https://github.com/BeardOverflow/msi-ec && cd msi-ec` (Not required if using COPR or Debian/Alpine/Slackware install way) 
+2. Clone this repository and cd to it: `git clone https://github.com/damien1141/msi-ec && cd msi-ec` (Not required if using COPR or Debian/Alpine/Slackware install way) 
 3. Choose one of the following installation methods
 
 > [!NOTE]
